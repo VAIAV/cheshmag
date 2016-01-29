@@ -83,9 +83,10 @@ public class CalendarTool {
 
 
     /**
-     * getIranianMonth:
-     * Returns the 'month' part of the Iranian date.
-     * @return int
+     * getIranianMonthName:
+     * Returns the 'month name' part of the Iranian date.
+     * @return String
+     * Added by rouhollah@gmail.com 2016/01/30
      */
     public String getIranianMonthName(int irMonth) {
         switch (irMonth){
@@ -228,6 +229,7 @@ public class CalendarTool {
      * getWeekDayStr:
      * Returns the week day name.
      * @return String
+     * changed by Rouhollah@gmail.com 2016/01/30
      */
     public String getWeekDayStr()
     {
