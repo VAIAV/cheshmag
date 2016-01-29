@@ -11,12 +11,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = (TextView) findViewById(R.id.textview_txt);
+        //TextView textView = (TextView) findViewById(R.id.textview_txt);
 
 
 
         CalendarTool calendarTool = new CalendarTool(2016,1,29);
 
-        textView.setText(calendarTool.getIranianDate());
+        //textView.setText(calendarTool.getIranianDate());
     }
 }
