@@ -17,19 +17,53 @@
             android:layout_height="wrap_content"
             android:src="@drawable/cheshmag_in_app" />
 
-        <TextView
-            android:textAlignment="center"
+        <ir.webarena.cheshmag.CustomTextView
             android:id="@+id/today_txt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textSize="20sp"
+            />
 
+
+        <ir.webarena.cheshmag.CustomButton
+            android:id="@+id/news_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="اخبار"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <ir.webarena.cheshmag.CustomButton
+                android:id="@+id/thesis_btn"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:text="پایان نامه ها"/>
+
+            <ir.webarena.cheshmag.CustomButton
+                android:id="@+id/crisis_btn"
+                android:layout_width="149dp"
+                android:layout_height="wrap_content"
+                android:text="نقد"/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <ListView
         android:id="@+id/left_drawer"
         android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#ff3f12" />
+        android:layout_gravity="right"
+        android:background="#EEEEEE"
+        />
 
 </android.support.v4.widget.DrawerLayout>

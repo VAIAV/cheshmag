@@ -31,5 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         today_text.setText(calendarTool.getIranianDate()); // Put today date to textview (شنبه 10 بهمن 1394)
 
+
+
     }
 }
