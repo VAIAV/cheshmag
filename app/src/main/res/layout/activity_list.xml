@@ -9,11 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ir.webarena.cheshmag.SecondActivity">
 
-    <TextView
-        android:id="@+id/text_view_test"
+    <ListView
+        android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="wwwwwwww"
-        />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
