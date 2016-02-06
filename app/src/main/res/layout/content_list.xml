@@ -13,7 +13,7 @@
     tools:showIn="@layout/activity_list">
 
     <TextView
-        android:id="@+id/text_view_test"
+        android:id="@+id/text_view_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

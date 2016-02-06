@@ -1,6 +1,7 @@
 package ir.webarena.cheshmag;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +14,23 @@ import org.w3c.dom.Text;
  * Created by Aylin on 2/5/2016.
  */
 public class CustomAdapter extends BaseAdapter {
-    public CustomAdapter(String[] newsArray, Context context) {
-        this.newsArray = newsArray;
+    public CustomAdapter(String[] newsIdArray, String[] newsDateArray, String[] newsTitleArray, Context context) {
+        //this.newsArray = newsArray;
+        this.newsIdArray = newsIdArray;
+        this.newsDateArray = newsDateArray;
+        this.newsTitleArray = newsTitleArray;
         this.context = context;
     }
 
-    String[] newsArray;
+    //String[] newsArray;
+    String[] newsIdArray;
+    String[] newsDateArray;
+    String[] newsTitleArray;
     Context context;
 
     @Override
     public int getCount() {
-        return newsArray.length;
+        return newsIdArray.length;
     }
 
     @Override
@@ -39,8 +46,14 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View newsRow = LayoutInflater.from(context).inflate(R.layout.content_list, parent, false);
-        TextView textView = (TextView) newsRow.findViewById(R.id.text_view_test);
-        textView.setText(newsArray[position]);
+        TextView textView = (TextView) newsRow.findViewById(R.id.text_view_news);
+
+        String htmlFormatNews = "<font color=\"blue\">" + newsTitleArray[position] + "</font> - <font color=\"gray\" size=\"10px\">"+newsDateArray[position]+"</font>";
+
+
+        textView.setText(Html.fromHtml(htmlFormatNews));
+        //textView.setText(newsTitleArray[position]);
+
         return newsRow;
     }
 }

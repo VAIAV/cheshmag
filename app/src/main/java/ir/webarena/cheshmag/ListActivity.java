@@ -33,7 +33,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        dataUrl = "http://cheshmag.com/dev/?limit=5";
+        dataUrl = "http://cheshmag.com/dev/?limit=20";
 
         listView = (ListView) findViewById(R.id.list_view);
         //textView = (TextView) findViewById(R.id.text_view_test);
@@ -42,10 +42,12 @@ public class ListActivity extends AppCompatActivity {
 
         Log.d("rooh_onCreate", "on create");
 
+        /*
         newsArray = new String[] {"11111111", "222222", "333333", "44444444", "55555555", "66666666", "77777777"};
 
         CustomAdapter customAdapter = new CustomAdapter(newsArray, this);
         listView.setAdapter(customAdapter);
+        */
 
         new Thread(new Runnable() {
             @Override
@@ -97,9 +99,11 @@ public class ListActivity extends AppCompatActivity {
 
                 Log.d("rooh_allDataArraylength", allDataArray.length() + "");
 
-                String[] newsIdArray = new String[allDataArray.length()];
-                String[] newsTitleArray = new String[allDataArray.length()];
-                String[] newsDateArray = new String[allDataArray.length()];
+
+                final String[] newsIdArray = new String[allDataArray.length()];
+                final String[] newsTitleArray = new String[allDataArray.length()];
+                final String[] newsDateArray = new String[allDataArray.length()];
+
 
                 for(int i = 0; i < allDataArray.length(); i++){
                     //newsAllInOneArray[i] = allDataArray.getString(i);
@@ -111,6 +115,17 @@ public class ListActivity extends AppCompatActivity {
                     newsDateArray[i] = nthObject.getString("date");
                     newsTitleArray[i] = nthObject.getString("title");
                 }
+
+
+                /*
+                Log.d("rooh_id_1", newsIdArray[1]);
+                Log.d("rooh_date_1", newsDateArray[1]);
+                Log.d("rooh_title_1", newsTitleArray[1]);
+
+                Log.d("rooh_id_2", newsIdArray[2]);
+                Log.d("rooh_date_2", newsDateArray[2]);
+                Log.d("rooh_title_2", newsTitleArray[2]);
+                */
 
                 /*
                 String firstElement = allDataArray.getString(0);
@@ -127,6 +142,9 @@ public class ListActivity extends AppCompatActivity {
 
                 */
 
+
+                final CustomAdapter customAdapter = new CustomAdapter(newsIdArray, newsDateArray, newsTitleArray, this);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -134,6 +152,11 @@ public class ListActivity extends AppCompatActivity {
                         //textView.setText(newsTitle+" - "+newsDate);
 
                         //textView.setText(Html.fromHtml(htmlFormatNews));
+                        //newsArray = new String[] {"11111111", "222222", "333333", "44444444", "55555555", "66666666", "77777777"};
+
+
+                        listView.setAdapter(customAdapter);
+
                     }
                 });
             } else {
