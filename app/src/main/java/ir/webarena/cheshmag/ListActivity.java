@@ -1,5 +1,6 @@
 package ir.webarena.cheshmag;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +34,12 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        Intent listIntent = getIntent();
+        Bundle listIntentExtras = listIntent.getExtras();
+        String category = listIntentExtras.getString("category");
+
+        Toast.makeText(ListActivity.this, category, Toast.LENGTH_SHORT).show();
 
         dataUrl = "http://cheshmag.com/dev/?limit=20";
 
@@ -81,7 +89,6 @@ public class ListActivity extends AppCompatActivity {
                 final String[] newsTitleArray = new String[allDataArray.length()];
                 final String[] newsDateArray = new String[allDataArray.length()];
 
-
                 for(int i = 0; i < allDataArray.length(); i++){
                     String nthElement = allDataArray.getString(i);
                     Log.d("rooh_inloop", i+"");
@@ -102,6 +109,15 @@ public class ListActivity extends AppCompatActivity {
                         Log.d("rooh_runOnUiThread", "OK");
 
                         listView.setAdapter(customAdapter);
+
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Toast.makeText(ListActivity.this, position + "/" + id, Toast.LENGTH_SHORT).show();
+                                //String newsId = (String) view.getTag(1);
+                                //Toast.makeText(ListActivity.this, newsId, Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                     }
                 });

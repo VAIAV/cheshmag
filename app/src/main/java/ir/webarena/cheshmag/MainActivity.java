@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView today_text = (TextView) findViewById(R.id.today_txt);
         Button news_btn = (Button) findViewById(R.id.news_btn);
+        Button thesis_btn = (Button) findViewById(R.id.thesis_btn);
+        Button crisis_btn = (Button) findViewById(R.id.crisis_btn);
 
         Date curDate = new Date(); // today
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy,M,d"); // set date format
@@ -39,6 +41,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent gotoList = new Intent(MainActivity.this, ListActivity.class);
+                gotoList.putExtra("category", "news");
+                startActivity(gotoList);
+            }
+        });
+
+        thesis_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoList = new Intent(MainActivity.this, ListActivity.class);
+                gotoList.putExtra("category", "thesis");
+                startActivity(gotoList);
+            }
+        });
+
+        crisis_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoList = new Intent(MainActivity.this, ListActivity.class);
+                gotoList.putExtra("category", "crisis");
                 startActivity(gotoList);
             }
         });

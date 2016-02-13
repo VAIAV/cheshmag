@@ -45,14 +45,14 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         View newsRow = LayoutInflater.from(context).inflate(R.layout.content_list, parent, false);
         TextView textView = (TextView) newsRow.findViewById(R.id.text_view_news);
 
         String htmlFormatNews = "<font color=\"blue\">" + newsTitleArray[position] + "</font> - <font color=\"gray\" size=\"10px\">"+newsDateArray[position]+"</font>";
 
-
         textView.setText(Html.fromHtml(htmlFormatNews));
-        //textView.setText(newsTitleArray[position]);
+
 
         return newsRow;
     }
