@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -110,14 +111,19 @@ public class ListActivity extends AppCompatActivity {
 
                         listView.setAdapter(customAdapter);
 
+
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Toast.makeText(ListActivity.this, position + "/" + id, Toast.LENGTH_SHORT).show();
-                                //String newsId = (String) view.getTag(1);
-                                //Toast.makeText(ListActivity.this, newsId, Toast.LENGTH_SHORT).show();
+                                //Object object = parent.getItemAtPosition(position);
+                                String newsIdValue = ((TextView) view.findViewById(R.id.text_view_newsid)).getText().toString();
+                                Toast.makeText(ListActivity.this, position + " " + newsIdValue , Toast.LENGTH_SHORT).show();
+                                Intent goToDetail = new Intent(ListActivity.this, NewsDetailActivity.class);
+                                goToDetail.putExtra("newsIdValue", newsIdValue);
+                                startActivity(goToDetail);
                             }
                         });
+
 
                     }
                 });
@@ -131,5 +137,7 @@ public class ListActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }

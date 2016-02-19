@@ -9,21 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="ir.webarena.cheshmag.ListActivity"
-    tools:showIn="@layout/activity_list">
-
+    tools:context="ir.webarena.cheshmag.NewsDetailActivity"
+    tools:showIn="@layout/activity_news_detail">
 
     <TextView
-        android:id="@+id/text_view_newsid"
+        android:id="@+id/news_detail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        />
+        android:layout_height="match_parent"
+        android:text="News Detail"/>
 
-    <ir.webarena.cheshmag.CustomTextView
-        android:id="@+id/text_view_news"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        />
 </RelativeLayout>

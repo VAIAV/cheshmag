@@ -20,6 +20,10 @@
         <activity
             android:name=".ListActivity"
             android:label="@string/title_activity_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NewsDetailActivity"
+            android:label="@string/title_activity_news_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
