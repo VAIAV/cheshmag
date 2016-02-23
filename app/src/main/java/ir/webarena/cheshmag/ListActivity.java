@@ -42,7 +42,20 @@ public class ListActivity extends AppCompatActivity {
 
         Toast.makeText(ListActivity.this, category, Toast.LENGTH_SHORT).show();
 
-        dataUrl = "http://cheshmag.com/dev/?limit=20";
+        switch (category){
+            case "news":
+                dataUrl = "http://cheshmag.com/dev/news.php";
+                break;
+            case "thesis":
+                dataUrl = "http://cheshmag.com/dev/thesis.php";
+                break;
+            case "crisis":
+                dataUrl = "http://cheshmag.com/dev/crisis.php";
+                break;
+            default:
+                dataUrl = "http://cheshmag.com/dev/news.php";
+        }
+
 
         listView = (ListView) findViewById(R.id.list_view);
 
