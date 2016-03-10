@@ -1,12 +1,16 @@
 package ir.webarena.cheshmag;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         Button news_btn = (Button) findViewById(R.id.news_btn);
         Button thesis_btn = (Button) findViewById(R.id.thesis_btn);
         Button crisis_btn = (Button) findViewById(R.id.crisis_btn);
+
+        ConnectionDetector connectionDetector = new ConnectionDetector();
+
+        if (connectionDetector.isInternetAvailable(this)) {
+            Toast.makeText(MainActivity.this, "سایت قابل دسترسی است", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "سایت در دسترس نیست، لطفا اتصال به اینترنت را بررسی کنید", Toast.LENGTH_SHORT).show();
+        }
 
         Date curDate = new Date(); // today
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy,M,d"); // set date format

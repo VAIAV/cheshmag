@@ -1,5 +1,6 @@
 package ir.webarena.cheshmag;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -39,6 +40,7 @@ public class ListActivity extends AppCompatActivity {
         Intent listIntent = getIntent();
         Bundle listIntentExtras = listIntent.getExtras();
         String category = listIntentExtras.getString("category");
+        final ProgressDialog dialog = ProgressDialog.show(ListActivity.this, "", "در حال دیافت اطلاعات", true);
 
         Toast.makeText(ListActivity.this, category, Toast.LENGTH_SHORT).show();
 
@@ -68,11 +70,12 @@ public class ListActivity extends AppCompatActivity {
             public void run() {
                 Log.d("rooh_run_getData", "inside thread");
                 getData(dataUrl);
+                dialog.dismiss();
             }
         }).start();
     }
 
-    public void getData(String dataUrl){
+    public void getData(final String dataUrl) {
         Log.d("rooh_inside_getData", "ooooooo");
         try {
             URL targetUrl = new URL(dataUrl);
@@ -130,7 +133,7 @@ public class ListActivity extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                 //Object object = parent.getItemAtPosition(position);
                                 String newsIdValue = ((TextView) view.findViewById(R.id.text_view_newsid)).getText().toString();
-                                Toast.makeText(ListActivity.this, position + " " + newsIdValue , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListActivity.this, dataUrl + "/" + newsIdValue, Toast.LENGTH_SHORT).show();
                                 Intent goToDetail = new Intent(ListActivity.this, NewsDetailActivity.class);
                                 goToDetail.putExtra("newsIdValue", newsIdValue);
                                 startActivity(goToDetail);
